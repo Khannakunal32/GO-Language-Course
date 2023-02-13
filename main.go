@@ -1,12 +1,16 @@
 package main // packages to use
 
 import (
+	kali "booking-app/greetings" // we need to import our made package into the by moduleName/functionName
 	"fmt"
-	"strings"
-) // imported libraries
+)
+
+// imported libraries
 /// we use command like go mod init booking-app
 // then to run we use go run filename
 
+// global variables can be defined here
+// not importing fuctnios from same level is direct and does not require any importing or exporting but for another level ie package formed inside another folder require it
 func main()  {
 	var firstName string;
 	var lastName string;
@@ -18,6 +22,8 @@ func main()  {
 	var bookingsSlice [] string; // slice of strings with not defined size
 	
 	
+	kali.Greetings(); // kali function is imported from the package named greetings 
+
 	// for{} runs loop infinite
 	for checkRemainingTickets(remainingTickets, noOfTickets){
 		fmt.Printf("\nPlease Enter your first name: ")
@@ -31,48 +37,36 @@ func main()  {
 		
 		fmt.Printf("Enter number of tickets to book: ")
 		fmt.Scan(&noOfTickets);
-	
-		remainingTickets -= noOfTickets;
-		bookingsArray[0] = firstName + " " + lastName;
 		
-		fmt.Printf("\nThe whole array: %v\n",bookingsArray)
-		fmt.Printf("BookingsArray type: %T\n",bookingsArray)
-		fmt.Printf("The length array: %v\n",len(bookingsArray))
-		
-		bookingsSlice = append(bookingsSlice, firstName+ " " + lastName) // to append to the last bookingSlice last
-	
-		fmt.Printf("\nThe whole Slice: %v\n",bookingsSlice)
-		fmt.Printf("BookingsSlice type: %T\n",bookingsSlice)
-		fmt.Printf("The length Slice: %v\n",len(bookingsSlice))
-	
-		fmt.Printf("\nThank you %v %v for booking %v tickets, \nYou will be notified on your email at %v\n", firstName, lastName, noOfTickets, email);
-		fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName);
-		
-		//printout out the first names by creating a slice 
+		isValidName, isValidEmail := ValidateUserInput(firstName, lastName, email);
 
-		
-		
-		// print first names
-		printFirstNames(bookingsSlice);
-	}
-}
+		if isValidEmail && isValidName {
 
-func checkRemainingTickets (remainingTickets uint, orderedTicket uint) bool{
-
-	if remainingTickets < orderedTicket {
-		fmt.Printf("\nSorry, there are %v remaining tickets\n", remainingTickets)
-		return false
-	}
-	return true
-}
-
-func printFirstNames(bookingsSlice []string) {
-	var firstNameSlice [] string
-	for _, nameElement := range bookingsSlice { // slice for loop give us index and an element to ignore the index or any variable we use _ so that it is ignored 
 			
-		var names = strings.Fields(nameElement); // ["kunal khanna"] => [["kunal","khanna"]]
-		firstNameSlice = append(firstNameSlice, names[0])
+			remainingTickets -= noOfTickets;
+			bookingsArray[0] = firstName + " " + lastName;
+			
+			fmt.Printf("\nThe whole array: %v\n",bookingsArray)
+			fmt.Printf("BookingsArray type: %T\n",bookingsArray)
+			fmt.Printf("The length array: %v\n",len(bookingsArray))
+			
+			bookingsSlice = append(bookingsSlice, firstName+ " " + lastName) // to append to the last bookingSlice last
+			
+			fmt.Printf("\nThe whole Slice: %v\n",bookingsSlice)
+			fmt.Printf("BookingsSlice type: %T\n",bookingsSlice)
+			fmt.Printf("The length Slice: %v\n",len(bookingsSlice))
+			
+			fmt.Printf("\nThank you %v %v for booking %v tickets, \nYou will be notified on your email at %v\n", firstName, lastName, noOfTickets, email);
+			fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName);
+			
+			//printout out the first names by creating a slice 
+			
+			// print first names
+			printFirstNames(bookingsSlice);
+			} else {
+				
+				fmt.Printf("\nNot valid inputs\n");
+		}
+		
 	}
-
-	fmt.Printf("The first names of booking are %v\n", firstNameSlice)
 }
