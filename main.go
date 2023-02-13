@@ -11,6 +11,7 @@ import (
 
 // global variables can be defined here
 // not importing fuctnios from same level is direct and does not require any importing or exporting but for another level ie package formed inside another folder require it
+
 func main()  {
 	var firstName string;
 	var lastName string;
@@ -20,9 +21,10 @@ func main()  {
 	var conferenceName string = "Go conference";
 	var bookingsArray [50] string; // array of strings
 	var bookingsSlice [] string; // slice of strings with not defined size
+
 	
 	
-	kali.Greetings(); // kali function is imported from the package named greetings 
+	kali.Greetings() // kali function is imported from the package named greetings 
 
 	// for{} runs loop infinite
 	for checkRemainingTickets(remainingTickets, noOfTickets){
@@ -38,7 +40,7 @@ func main()  {
 		fmt.Printf("Enter number of tickets to book: ")
 		fmt.Scan(&noOfTickets);
 		
-		isValidName, isValidEmail := ValidateUserInput(firstName, lastName, email);
+		isValidName, isValidEmail := ValidateUserInput(firstName, lastName, email)
 
 		if isValidEmail && isValidName {
 
@@ -57,15 +59,15 @@ func main()  {
 			fmt.Printf("The length Slice: %v\n",len(bookingsSlice))
 			
 			fmt.Printf("\nThank you %v %v for booking %v tickets, \nYou will be notified on your email at %v\n", firstName, lastName, noOfTickets, email);
-			fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName);
+			fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName)
 			
 			//printout out the first names by creating a slice 
 			
 			// print first names
-			printFirstNames(bookingsSlice);
+			printFirstNames(bookingsSlice)
 			} else {
 				
-				fmt.Printf("\nNot valid inputs\n");
+				fmt.Printf("\nNot valid inputs\n")
 		}
 		
 	}

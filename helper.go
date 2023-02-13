@@ -16,11 +16,12 @@ func checkRemainingTickets (remainingTickets uint, orderedTicket uint) bool{
 	return true
 }
 
-func printFirstNames(bookingsSlice []string) {
+func printFirstNames(bookingsSlice []string) { // values: ["kunal khanna", "chhavi arora", "buddy khanna"] => ["kunal","chhavi","buddy"]
+
 	var firstNameSlice [] string
 	for _, nameElement := range bookingsSlice { // slice for loop give us index and an element to ignore the index or any variable we use _ so that it is ignored 
 			
-		var names = strings.Fields(nameElement); // ["kunal khanna"] => [["kunal","khanna"]]
+		var names = strings.Fields(nameElement); // "kunal khanna" => ["kunal","khanna"]
 		firstNameSlice = append(firstNameSlice, names[0])
 	}
 
