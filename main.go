@@ -61,11 +61,7 @@ func main()  {
 			
 			fmt.Printf("\nThank you %v %v for booking %v tickets, \nYou will be notified on your email at %v\n", firstName, lastName, noOfTickets, email);
 			fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName)
-			
-			
-			
-			//printout out the first names by creating a slice 
-			
+						
 			// print first names
 			printFirstNames(bookingsSlice)
 
@@ -74,6 +70,11 @@ func main()  {
 			
 			// adding the map element created in slice of map
 			bookingsMap = append(bookingsMap, mapElement)
+
+			// storing infromation in struct
+			var userDataStruct = pushDataIntoStruct(firstName, lastName, email, noOfTickets)
+
+			fmt.Printf("\nShowing data in struct: %v, like first name is %v\n", userDataStruct, userDataStruct.firstName)
 
 			} else {
 

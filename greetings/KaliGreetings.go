@@ -9,3 +9,4 @@ import (
 func Greetings(){
 	fmt.Printf("\nStarting this project...\n\n")
 }
+

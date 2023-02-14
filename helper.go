@@ -57,6 +57,26 @@ func printMapInformation(bookingsMap []map[string]string){
 	
 	for _, bookings := range bookingsMap {
 
-		fmt.Printf("\nList of books from bookingsMap: %v\n", bookings)
+		fmt.Printf("List of books from bookingsMap: %v\n", bookings)
 	}
+}
+
+//defining a struct
+type structData struct {
+	firstName string
+	lastName string
+	email string
+	userTickets uint
+}
+
+func pushDataIntoStruct(firstName string, lastName string, email string, userTickets uint) structData {
+	
+	var userDataInStruct = structData{
+		firstName: firstName, 
+		lastName: lastName, 
+		email: email, 
+		userTickets: userTickets,
+	}
+
+	return userDataInStruct
 }
