@@ -1,3 +1,4 @@
+// working with channels
 package main
 
 import (
@@ -19,6 +20,6 @@ func main() {
 
 	go CalculateValue(intChan) // to use channel we make this a routine of itself using go keyword without keyword this will not work
 	
-	num := <-intChan
+	num := <-intChan // we are listing here for the value from channel and when we get this value we push it to num
 	log.Println(num)
 }
