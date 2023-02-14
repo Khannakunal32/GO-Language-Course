@@ -19,15 +19,15 @@ func main()  {
 	var noOfTickets uint = 0;
 	var remainingTickets uint= 50;
 	var conferenceName string = "Go conference";
-	var bookingsArray [50] string; // array of strings
-	var bookingsSlice [] string; // slice of strings with not defined size
-
-	
+	var bookingsArray [50]string; // array of strings
+	var bookingsSlice []string; // slice of strings with not defined size
+	var bookingsMap []map[string]string // slice of bookingsMap
+	var newInformationString = "true"
 	
 	kali.Greetings() // kali function is imported from the package named greetings 
 
 	// for{} runs loop infinite
-	for checkRemainingTickets(remainingTickets, noOfTickets){
+	for newInformationString == "true" && checkRemainingTickets(remainingTickets, noOfTickets) {
 		fmt.Printf("\nPlease Enter your first name: ")
 		fmt.Scan(&firstName);
 	
@@ -41,9 +41,9 @@ func main()  {
 		fmt.Scan(&noOfTickets);
 		
 		isValidName, isValidEmail := ValidateUserInput(firstName, lastName, email)
-
+		
 		if isValidEmail && isValidName {
-
+			
 			
 			remainingTickets -= noOfTickets;
 			bookingsArray[0] = firstName + " " + lastName;
@@ -58,17 +58,33 @@ func main()  {
 			fmt.Printf("BookingsSlice type: %T\n",bookingsSlice)
 			fmt.Printf("The length Slice: %v\n",len(bookingsSlice))
 			
+			
 			fmt.Printf("\nThank you %v %v for booking %v tickets, \nYou will be notified on your email at %v\n", firstName, lastName, noOfTickets, email);
 			fmt.Printf("%v remaing for %v\n", remainingTickets, conferenceName)
+			
+			
 			
 			//printout out the first names by creating a slice 
 			
 			// print first names
 			printFirstNames(bookingsSlice)
+
+			// storing the map 
+			var mapElement map[string]string = workingWithMap(firstName, lastName, email, noOfTickets);
+			
+			// adding the map element created in slice of map
+			bookingsMap = append(bookingsMap, mapElement)
+
 			} else {
-				
+
 				fmt.Printf("\nNot valid inputs\n")
+			}
+			
+			fmt.Println("You want to continue adding ?")
+			fmt.Scan(&newInformationString);
+			
 		}
-		
-	}
+		//showing the information store in map
+		printMapInformation(bookingsMap)
+
 }

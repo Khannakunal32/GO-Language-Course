@@ -4,6 +4,7 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 )
 
@@ -28,6 +29,7 @@ func printFirstNames(bookingsSlice []string) { // values: ["kunal khanna", "chha
 	fmt.Printf("The first names of booking are %v\n", firstNameSlice)
 }
 
+
 func ValidateUserInput(firstName string, lastName string, email string) (bool, bool) {
 
 	var isValidName bool = len(firstName) >= 2 && len(lastName) >= 2
@@ -35,3 +37,26 @@ func ValidateUserInput(firstName string, lastName string, email string) (bool, b
 
 	return isValidName, isValidEmail
 } 
+
+// to store data in map we can use like key pair
+// name: "Kunal Khanna" 
+
+func workingWithMap(firstName string, lastName string, email string, userTickets uint) map[string]string{
+
+	mapDataArray := make(map[string]string); // format is map[keyType]string, not the value of value is string type we cannot do anything to change it
+	
+	mapDataArray["firstName"] = firstName;
+	mapDataArray["LastName"] = firstName;
+	mapDataArray["email"] = firstName;
+	mapDataArray["userTickets"] = strconv.FormatUint(uint64(userTickets), 10); // method to store intiger in a string format
+
+	return mapDataArray
+}
+
+func printMapInformation(bookingsMap []map[string]string){
+	
+	for _, bookings := range bookingsMap {
+
+		fmt.Printf("\nList of books from bookingsMap: %v\n", bookings)
+	}
+}
