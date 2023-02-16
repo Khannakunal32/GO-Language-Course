@@ -8,7 +8,7 @@ import (
 
 type Person struct {
 	FirstName string `json:"first_name"` // tells go that we are creating json what it should look for
-	LastName string `json:last_name"`
+	LastName string `json:"last_name"`
 	Age int `json:"age"`
 	HasDog bool `json:"has_dog"`
 }
