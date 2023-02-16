@@ -17,6 +17,7 @@ import (
 func main() {
 
 	// loading .env file for database configuration
+	// create .env file and it should have PostgresDBConfiguration = "host=localhost port=5432 dbname=animals user=_____ password=_____" // file details accordingly
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
