@@ -1,31 +1,39 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 )
 
-const portNumber = "127.0.0.1:8032"
+// const portNumber = "127.0.0.1:8032"
+const portNumber = ":8032"
 
 //func for home route
 func homeHandler(w http.ResponseWriter, r *http.Request){
-	fmt.Fprintf(w,"Welcome Home\n")
+	fmt.Fprintf(w,"Welcome Home friends\n")
 }
 
 //func for home route
 func aboutHandler(w http.ResponseWriter, r *http.Request){
 
-	firstNumber := 10
-	secondNumber := 20
-	sum, _ := sumOfTwoNumbers(firstNumber, secondNumber)
+	firstNumber := 100.0
+	secondNumber := 100.0
 
-	fmt.Fprintf(w,"\nThis is welcome page: \nSum of two numbers %v + %v: %v", firstNumber, secondNumber, sum)
+	divident, _ := divisionOfTwoNumbers(firstNumber, secondNumber)
+
+	fmt.Fprintf(w,"Divison of two numbers %v / %v: %v", firstNumber, secondNumber, divident)
 }
 
 // func to add sum of two number
-func sumOfTwoNumbers(a, b int) (int, error) {
+func divisionOfTwoNumbers(a, b float64) (float64, error) {
 	
-	return (a + b),nil
+	if b == 0 {
+		err := errors.New("Cannot divide by zero")
+	    return 0, err
+	}
+
+	return (a / b),nil
 }
 
 
@@ -34,7 +42,7 @@ func main() {
 	// creating route "/" and returning hello world 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request){
 		fmt.Printf("Hello,world %v\n", r);
-		n, err := fmt.Fprintf(w, "Hello,world\n")
+		n, err := fmt.Fprintf(w, "Hello,world Hi\n")
 		if err != nil {
 			fmt.Println(err)
 		}
@@ -52,5 +60,6 @@ func main() {
 	// http.ListenAndServe(":8032",nil)
 
 	//this aviods any pop up from coming
+	fmt.Printf("\n\nStarting server on port %s\n", portNumber)
 	http.ListenAndServe(portNumber,nil)
 }

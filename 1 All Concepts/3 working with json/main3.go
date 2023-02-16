@@ -13,6 +13,7 @@ type Person struct {
 	HasDog bool `json:"has_dog"`
 }
 
+
 func main() {
 	myJson := `
 	[
