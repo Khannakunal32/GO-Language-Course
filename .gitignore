@@ -1,4 +1,8 @@
 .env
+
+#Related folder
+Related_Work/
+
 # Binaries for programs and plugins
 *.exe
 *.exe~
