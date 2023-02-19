@@ -1,0 +1,15 @@
+// 1 first of all go to dbdiagram.io and desing a database
+
+// 2 open docker and pull postgres image cmd --->
+// docker pull postgres:12-alpine
+// 3 to run a conteier command is cmd--->
+//  docker run --name postgres12 -p 5432:5432 -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -d postgres:12-alpine
+
+
+// 4 to start docker container cmd --->
+// docker exec -it <container name or id> <command> [args]
+
+//docker logs -> show the logs of the container
+//docker ps -> show the runing containers
+
+// 5 start dbeaver and connect to postgres image
